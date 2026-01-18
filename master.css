@@ -1,0 +1,177 @@
+:root {
+    --golf-green: #2d5a27;
+    --fairway: #e8f5e9;
+    --white: #ffffff;
+    --text: #333;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: var(--text);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    /* Bold, athletic tournament style */
+    font-size: 56px;
+}
+
+h1 {
+    /* ... your other styles ... */
+    background: linear-gradient(135deg, var(--golf-green) 0%, #4caf50 100%);
+
+    /* Use both for maximum compatibility and to clear VS errors */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* This is mandatory for the effect to show */
+    -webkit-text-fill-color: transparent;
+}
+
+/* Optional: Add a subtle animated underline */
+h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--golf-green);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+
+
+h2 {
+    color: var(--golf-green);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Card Container for Lists and Tables */
+#leaderboard-container,
+#team-container {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 800px;
+    border-top: 5px solid var(--golf-green);
+}
+
+/* List Styling for Golfers */
+#golfers-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+#golfers-list li {
+    background: var(--fairway);
+    padding: 10px;
+    border-radius: 6px;
+    border-left: 3px solid var(--golf-green);
+    font-size: 0.9rem;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead {
+    background-color: var(--golf-green);
+    color: white;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+tr:nth-child(even) {
+    background-color: var(--fairway);
+}
+
+tr:hover {
+    background-color: #dcedc8;
+    /* Subtle hover effect */
+}
+
+/* Loading/Status Message */
+#status-message {
+    font-weight: bold;
+    color: var(--golf-green);
+    background: var(--fairway);
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+#leaderboard-search {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 20px 12px 45px;
+    font-size: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: var(--white);
+    /* Corrected SVG encoding: # is %23 and attributes use single quotes */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%232d5a27' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+#leaderboard-search:focus {
+    border-color: var(--golf-green);
+    box-shadow: 0 4px 12px rgba(45, 90, 39, 0.15);
+}
+
+/* Optional: Style the placeholder text color */
+#leaderboard-search::placeholder {
+    color: #999;
+    opacity: 1;
+    /* Firefox fix */
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Adds a horizontal scrollbar on mobile if the table is too wide */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling for iPhone */
+}
+@media (max-width: 600px) {
+    body {
+        padding: 10px; /* Less margin on phones */
+    }
+    
+    h1 {
+        font-size: 2rem; /* Smaller header for phones */
+    }
+
+    th, td {
+        padding: 8px 4px; /* Narrower padding to fit more columns */
+        font-size: 0.85rem; /* Slightly smaller text */
+    }
+}
+
+@media (max-width: 600px) {
+    #leaderboard-search {
+        max-width: 100%; /* Spans full width on mobile */
+        font-size: 16px; /* Prevents iPhone from auto-zooming when you tap the box */
+    }
+}

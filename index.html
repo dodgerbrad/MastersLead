@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="master.css">
+    <title>Masters 2026</title>
+
+</head>
+
+<body>
+    <h1>Masters Leaderboard</h1>
+
+    <div id="status-message">Connecting to Google Sheets...</div>
+
+    <div id="team-container">
+        <h2>Team Standings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Team Name</th>
+                    <th>Total Points</th>
+                    <th>Pts Back</th>
+                    <th>Rank</th>
+                </tr>
+            </thead>
+            <tbody id="team-body"></tbody>
+        </table>
+    </div>
+
+    <div id="leaderboard-container">
+        <h2>Tournament Standings</h2>
+
+        <input type="text" id="leaderboard-search" onkeyup="filterLeaderboard()" placeholder="Search by team...">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Total</th>
+                        <th>Today</th>
+                        <th>Pts</th>
+                        <th>Team</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <!-- JS inserts <tr> here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="masters.js"></script>
+</body>
+
+</html>
