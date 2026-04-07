@@ -97,17 +97,13 @@ function displayTeamData(teamData) {
     const tableBody = document.getElementById('team-body');
     if (!tableBody || !teamData) return;
 
-    // Sort teamData by rank (ascending: 1, 2, 3...)
-    teamData.sort((a, b) => {
-        return (parseInt(a.rank) || 999) - (parseInt(b.rank) || 999);
-    });
+    // Sort by rank
+    teamData.sort((a, b) => (parseInt(a.rank) || 999) - (parseInt(b.rank) || 999));
 
     tableBody.innerHTML = '';
 
     teamData.forEach(item => {
         const tr = document.createElement('tr');
-        
-        // Added 'fairway-row' class to keep consistency with the leaderboard
         tr.classList.add('fairway-row');
         
         const keys = ['betterName', 'pts', 'ptsBack', 'rank'];
@@ -115,8 +111,23 @@ function displayTeamData(teamData) {
         keys.forEach(key => {
             const td = document.createElement('td');
             td.textContent = item[key] !== undefined ? item[key] : '';
-            
-            // Optional: Bold the Rank and Pts for readability
+
+            // Make the Team Name (betterName) clickable
+            if (key === 'betterName') {
+                td.style.color = '#006747'; // Masters Green
+                td.style.cursor = 'pointer';
+                td.style.textDecoration = 'underline';
+                
+                td.onclick = () => {
+                    const searchInput = document.getElementById("leaderboard-search");
+                    searchInput.value = item.betterName; // Put team name in search box
+                    filterLeaderboard(); // Trigger the filter
+                    
+                    // Smooth scroll down to the leaderboard
+                    document.getElementById('leaderboard-container').scrollIntoView({ behavior: 'smooth' });
+                };
+            }
+
             if (key === 'rank' || key === 'pts') {
                 td.style.fontWeight = 'bold';
             }
@@ -127,6 +138,7 @@ function displayTeamData(teamData) {
         tableBody.appendChild(tr);
     });
 }
+
 
 
 function filterLeaderboard() {
