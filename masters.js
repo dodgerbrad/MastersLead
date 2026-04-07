@@ -5,14 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function updateDashboard() {
-    // 1. Get draftMaster from the browser URL (e.g., ?draftMaster=Sam)
     const urlParams = new URLSearchParams(window.location.search);
     const draftMaster = urlParams.get('draftMaster');
 
-    // 2. Base URL from your Google Apps Script Deployment
+    // Updated API URL
     const BASE_API_URL = 'https://script.google.com/macros/s/AKfycbxBkqiZq47fpsJ4GCAMRtVx-eRa1LY65aJZ3D4i2q_JHcy7a0wUIKYHKE9eFM6IwP1Afg/exec';
 
-    // 3. Build the Fetch URL with parameters
     let fetchUrl = `${BASE_API_URL}?page=leaderboard`;
     if (draftMaster) {
         fetchUrl += `&draftMaster=${encodeURIComponent(draftMaster)}`;
@@ -23,7 +21,6 @@ function updateDashboard() {
     fetch(fetchUrl)
         .then(response => response.json())
         .then(data => {
-            // These keys (leaderboardData, teamPointsData) must match your Apps Script
             displayLeaderboard(data.leaderboardData);
             displayTeamData(data.teamPointsData);
 
@@ -46,39 +43,40 @@ function displayLeaderboard(leaderboardData) {
     leaderboardData.forEach(item => {
         const tr = document.createElement('tr');
         
-        // Define the order of columns
+        // Match the columns in your HTML <thead>
         const columns = ['rank', 'name', 'total', 'today', 'pts', 'team'];
         
         columns.forEach((key, index) => {
             const td = document.createElement('td');
             
             if (key === 'name') {
-                // Create a container for the flag and name
+                // Ensure name cell layout is horizontal
                 td.style.display = 'flex';
                 td.style.alignItems = 'center';
                 td.style.gap = '10px';
+                td.style.whiteSpace = 'nowrap'; // Keeps name on one line
 
-                // Create the flag image
+                // Flag Image: Looking in your GitHub 'flags' folder
                 const img = document.createElement('img');
-                // Use the 'flag' property from your updated Apps Script
+                // Path must be relative for GitHub Pages
                 img.src = `flags/${item.flag || 'default.png'}`; 
                 img.style.width = '24px';
                 img.style.height = 'auto';
                 img.style.borderRadius = '2px';
-                img.alt = ''; // Decorative
+                img.style.flexShrink = '0'; // Prevents flag from squishing
+                img.alt = ''; 
 
-                // Create the text span for the name
+                // Name Text
                 const nameSpan = document.createElement('span');
                 nameSpan.textContent = item.name;
 
                 td.appendChild(img);
                 td.appendChild(nameSpan);
             } else {
-                // Standard text for other columns
                 td.textContent = item[key];
             }
 
-            // Keep your existing styling for the Pts column (index 4)
+            // Pts Styling (Column index 4)
             if (index === 4) {
                 td.style.fontWeight = 'bold';
                 td.style.color = 'var(--golf-green)';
@@ -92,8 +90,6 @@ function displayLeaderboard(leaderboardData) {
     });
 }
 
-
-
 function displayTeamData(teamData) {
     const tableBody = document.getElementById('team-body');
     if (!tableBody || !teamData) return;
@@ -102,8 +98,6 @@ function displayTeamData(teamData) {
 
     teamData.forEach(item => {
         const tr = document.createElement('tr');
-        
-        // Column keys defined in the Apps Script .map() section
         const keys = ['betterName', 'pts', 'ptsBack', 'rank'];
 
         keys.forEach(key => {
@@ -123,11 +117,19 @@ function filterLeaderboard() {
     const tr = tableBody.getElementsByTagName("tr");
 
     for (let i = 0; i < tr.length; i++) {
-        // Targets the 6th column (index 5) - "Team"
+        // Updated to search BOTH the Player Name (td[1]) AND Team Name (td[5])
+        const nameTd = tr[i].getElementsByTagName("td")[1];
         const teamTd = tr[i].getElementsByTagName("td")[5];
-        if (teamTd) {
-            const teamName = teamTd.textContent || teamTd.innerText;
-            tr[i].style.display = teamName.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+        
+        if (nameTd || teamTd) {
+            const nameValue = nameTd ? nameTd.textContent || nameTd.innerText : "";
+            const teamValue = teamTd ? teamTd.textContent || teamTd.innerText : "";
+            
+            if (nameValue.toUpperCase().indexOf(filter) > -1 || teamValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
         }
     }
 }
