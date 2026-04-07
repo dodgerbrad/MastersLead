@@ -45,7 +45,11 @@
     <div id="leaderboard-container">
         <h2>Tournament Standings</h2>
 
-        <input type="text" id="leaderboard-search" onkeyup="filterLeaderboard()" placeholder="Search by team...">
+        <div id="search-container" style="display: flex; gap: 10px; margin-bottom: 15px;">
+    <input type="text" id="leaderboard-search" onkeyup="filterLeaderboard()" placeholder="Search by team..." style="flex: 1;">
+    <button id="clear-filter" onclick="clearFilter()" style="cursor: pointer;">Show All</button>
+</div>
+
         <div class="table-container">
             <table>
                 <thead>
