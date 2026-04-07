@@ -43,6 +43,15 @@ h1::after {
     margin: 10px auto 0;
     border-radius: 2px;
 }
+h1 {
+    cursor: pointer;
+    user-select: none; /* Prevents text highlighting when double-clicking to refresh */
+}
+
+h1:active {
+    transform: scale(0.98); /* Gives a slight "press" feel when clicked */
+}
+
 
 
 
