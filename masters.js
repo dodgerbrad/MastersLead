@@ -46,27 +46,52 @@ function displayLeaderboard(leaderboardData) {
     leaderboardData.forEach(item => {
         const tr = document.createElement('tr');
         
-        // Explicitly define the order of columns to match your <thead>
+        // Define the order of columns
         const columns = ['rank', 'name', 'total', 'today', 'pts', 'team'];
         
         columns.forEach((key, index) => {
             const td = document.createElement('td');
             
-            // Access the specific property (e.g., item.rank, item.name)
-            td.textContent = item[key];
+            if (key === 'name') {
+                // Create a container for the flag and name
+                td.style.display = 'flex';
+                td.style.alignItems = 'center';
+                td.style.gap = '10px';
 
-            // Apply special styling to the Pts column (index 4)
+                // Create the flag image
+                const img = document.createElement('img');
+                // Use the 'flag' property from your updated Apps Script
+                img.src = `flags/${item.flag || 'default.png'}`; 
+                img.style.width = '24px';
+                img.style.height = 'auto';
+                img.style.borderRadius = '2px';
+                img.alt = ''; // Decorative
+
+                // Create the text span for the name
+                const nameSpan = document.createElement('span');
+                nameSpan.textContent = item.name;
+
+                td.appendChild(img);
+                td.appendChild(nameSpan);
+            } else {
+                // Standard text for other columns
+                td.textContent = item[key];
+            }
+
+            // Keep your existing styling for the Pts column (index 4)
             if (index === 4) {
                 td.style.fontWeight = 'bold';
                 td.style.color = 'var(--golf-green)';
                 td.style.textAlign = 'center';
             }
+            
             tr.appendChild(td);
         });
 
         tableBody.appendChild(tr);
     });
 }
+
 
 
 function displayTeamData(teamData) {
