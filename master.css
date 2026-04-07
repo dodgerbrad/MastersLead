@@ -100,10 +100,11 @@ td {
     text-align: left;
     border-bottom: 1px solid #eee;
 }
-
+/*
 tr:nth-child(even) {
     background-color: var(--fairway);
 }
+*/
 
 tr:hover {
     background-color: #dcedc8;
