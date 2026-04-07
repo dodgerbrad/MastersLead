@@ -205,15 +205,25 @@ tr:hover {
 
 
 #main-header {
-    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
     cursor: pointer;
 }
 
-/* The state when the user is actively clicking */
-.header-click {
-    opacity: 0.3;
-    transform: scale(0.95);
-    letter-spacing: 1px;
+#main-header::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%; /* Start empty */
+    height: 3px;
+    background-color: #006747; /* Masters Green */
+    transition: width 0.4s ease-in-out;
 }
+
+.loading-bar::after {
+    width: 100% !important;
+}
+
 
 
