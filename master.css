@@ -254,5 +254,27 @@ tr:hover {
 }
 
 
+#clear-filter {
+    background-color: #006747; /* Masters Green */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    transition: background-color 0.2s;
+}
+
+#clear-filter:hover {
+    background-color: #004d35;
+}
+
+#clear-filter:active {
+    transform: scale(0.98);
+}
+
+
+
 
 
