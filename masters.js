@@ -138,11 +138,15 @@ function filterLeaderboard() {
 
 function refreshPage() {
     const header = document.getElementById('main-header');
+    
+    // Start the green bar animation
     header.classList.add('loading-bar');
     
+    // Wait for the 500ms animation to complete, then reload
     setTimeout(() => {
         window.location.reload();
     }, 500);
 }
+
 
 
