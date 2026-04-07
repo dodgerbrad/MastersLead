@@ -248,5 +248,11 @@ tr:hover {
 }
 
 
+#team-body td:first-child:hover {
+    color: #004d35 !important; /* Darker green on hover */
+    background-color: #f0fdf4;
+}
+
+
 
 
