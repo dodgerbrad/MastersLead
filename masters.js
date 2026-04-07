@@ -176,5 +176,15 @@ function refreshPage() {
     }, 500);
 }
 
+function clearFilter() {
+    const searchInput = document.getElementById("leaderboard-search");
+    searchInput.value = ""; // Clear the text
+    filterLeaderboard();    // Run the filter logic (shows everything)
+    
+    // Optional: Smooth scroll back to top of leaderboard
+    document.getElementById('leaderboard-container').scrollIntoView({ behavior: 'smooth' });
+}
+
+
 
 
