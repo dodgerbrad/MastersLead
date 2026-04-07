@@ -201,3 +201,19 @@ tr:hover {
         font-size: 16px; /* Prevents iPhone from auto-zooming when you tap the box */
     }
 }
+
+@keyframes masterSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.spinning {
+    display: inline-block; /* Required for rotation to work */
+    animation: masterSpin 0.6s ease-in-out;
+}
+
+#main-header {
+    transition: transform 0.2s;
+    user-select: none;
+}
+
