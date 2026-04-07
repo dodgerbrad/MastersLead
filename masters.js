@@ -138,11 +138,11 @@ function filterLeaderboard() {
 
 function refreshPage() {
     const header = document.getElementById('main-header');
-    header.classList.add('header-click');
+    header.classList.add('loading-bar');
     
     setTimeout(() => {
         window.location.reload();
-    }, 300);
+    }, 500);
 }
 
 
