@@ -10,7 +10,7 @@ function updateDashboard() {
     const draftMaster = urlParams.get('draftMaster');
 
     // 2. Base URL from your Google Apps Script Deployment
-    const BASE_API_URL = 'https://script.google.com/macros/s/AKfycbxpdmq-J2KiLXS11PnX4V55GoT-HHV9Yukq3FQIBPJyQN6JOgTrNgyDO2tsuKsOfbbN9w/exec';
+    const BASE_API_URL = 'https://script.google.com/macros/s/AKfycbxBkqiZq47fpsJ4GCAMRtVx-eRa1LY65aJZ3D4i2q_JHcy7a0wUIKYHKE9eFM6IwP1Afg/exec';
 
     // 3. Build the Fetch URL with parameters
     let fetchUrl = `${BASE_API_URL}?page=leaderboard`;
