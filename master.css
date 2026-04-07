@@ -154,6 +154,22 @@ tr:hover {
     overflow-x: auto; /* Adds a horizontal scrollbar on mobile if the table is too wide */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling for iPhone */
 }
+
+.undrafted-row {
+    opacity: 0.6; /* Makes the row 40% transparent */
+    background-color: rgba(0, 0, 0, 0.02); /* Very subtle grey tint */
+    transition: opacity 0.3s ease; /* Smooth fade if you filter/search */
+}
+
+/* Optional: Make it light up again when you hover over it */
+.undrafted-row:hover {
+    opacity: 1;
+}
+
+/* Ensure flags also look slightly faded in those rows */
+.undrafted-row img {
+    filter: grayscale(30%); /* Subtle desaturation for undrafted players */
+}
 @media (max-width: 600px) {
     body {
         padding: 10px; /* Less margin on phones */
