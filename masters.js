@@ -97,21 +97,37 @@ function displayTeamData(teamData) {
     const tableBody = document.getElementById('team-body');
     if (!tableBody || !teamData) return;
 
+    // Sort teamData by rank (ascending: 1, 2, 3...)
+    teamData.sort((a, b) => {
+        return (parseInt(a.rank) || 999) - (parseInt(b.rank) || 999);
+    });
+
     tableBody.innerHTML = '';
 
     teamData.forEach(item => {
         const tr = document.createElement('tr');
+        
+        // Added 'fairway-row' class to keep consistency with the leaderboard
+        tr.classList.add('fairway-row');
+        
         const keys = ['betterName', 'pts', 'ptsBack', 'rank'];
 
         keys.forEach(key => {
             const td = document.createElement('td');
             td.textContent = item[key] !== undefined ? item[key] : '';
+            
+            // Optional: Bold the Rank and Pts for readability
+            if (key === 'rank' || key === 'pts') {
+                td.style.fontWeight = 'bold';
+            }
+
             tr.appendChild(td);
         });
 
         tableBody.appendChild(tr);
     });
 }
+
 
 function filterLeaderboard() {
     const input = document.getElementById("leaderboard-search");
