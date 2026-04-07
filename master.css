@@ -202,18 +202,18 @@ tr:hover {
     }
 }
 
-@keyframes masterSpin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
 
-.spinning {
-    display: inline-block; /* Required for rotation to work */
-    animation: masterSpin 0.6s ease-in-out;
-}
 
 #main-header {
-    transition: transform 0.2s;
-    user-select: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
+
+/* The state when the user is actively clicking */
+.header-click {
+    opacity: 0.3;
+    transform: scale(0.95);
+    letter-spacing: 1px;
+}
+
 
