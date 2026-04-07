@@ -18,9 +18,11 @@
 </head>
 
 <body>
-    <h1 id="main-header" onclick="refreshPage()" style="cursor: pointer;">
-    Masters Leaderboard
-</h1>
+   <div class="header-container" onclick="refreshPage()" style="cursor: pointer; text-align: center;">
+    <h1 id="main-header">Masters Leaderboard</h1>
+    <div id="refresh-hint">Tap to refresh</div>
+</div>
+
 
 
     <div id="status-message">Connecting to Google Sheets...</div>
