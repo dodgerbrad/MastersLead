@@ -225,5 +225,28 @@ tr:hover {
     width: 100% !important;
 }
 
+#refresh-hint {
+    font-size: 0.8rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: -5px;
+    transition: opacity 0.3s ease;
+}
+
+/* Make the hint fade out when the loading bar starts */
+.loading-bar + #refresh-hint {
+    opacity: 0;
+}
+
+/* Ensure the container keeps everything centered */
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
 
 
