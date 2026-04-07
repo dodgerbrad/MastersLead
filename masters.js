@@ -120,15 +120,14 @@ function filterLeaderboard() {
     const tr = tableBody.getElementsByTagName("tr");
 
     for (let i = 0; i < tr.length; i++) {
-        // Updated to search BOTH the Player Name (td[1]) AND Team Name (td[5])
-        const nameTd = tr[i].getElementsByTagName("td")[1];
+        // Targets the 6th column (index 5) - "Team"
         const teamTd = tr[i].getElementsByTagName("td")[5];
         
-        if (nameTd || teamTd) {
-            const nameValue = nameTd ? nameTd.textContent || nameTd.innerText : "";
-            const teamValue = teamTd ? teamTd.textContent || teamTd.innerText : "";
+        if (teamTd) {
+            const teamValue = teamTd.textContent || teamTd.innerText;
             
-            if (nameValue.toUpperCase().indexOf(filter) > -1 || teamValue.toUpperCase().indexOf(filter) > -1) {
+            // Only checks the Team column
+            if (teamValue.toUpperCase().indexOf(filter) > -1) {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none";
@@ -136,3 +135,4 @@ function filterLeaderboard() {
         }
     }
 }
+
