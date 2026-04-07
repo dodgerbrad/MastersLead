@@ -42,6 +42,9 @@ function displayLeaderboard(leaderboardData) {
 
     leaderboardData.forEach(item => {
         const tr = document.createElement('tr');
+        if (item.team === "Undrafted") {
+            tr.classList.add('undrafted-row');
+        }
         
         // Match the columns in your HTML <thead>
         const columns = ['rank', 'name', 'total', 'today', 'pts', 'team'];
