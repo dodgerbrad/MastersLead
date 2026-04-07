@@ -136,3 +136,15 @@ function filterLeaderboard() {
     }
 }
 
+function refreshWithSpin() {
+    const header = document.getElementById('main-header');
+    
+    // Add the animation class
+    header.classList.add('spinning');
+    
+    // Wait for animation to finish (600ms), then reload
+    setTimeout(() => {
+        window.location.reload();
+    }, 600);
+}
+
