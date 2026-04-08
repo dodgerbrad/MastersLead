@@ -62,7 +62,7 @@ function displayLeaderboard(leaderboardData) {
                 // Flag Image: Looking in your GitHub 'flags' folder
                 const img = document.createElement('img');
                 // Path must be relative for GitHub Pages
-                img.src = `flags/${item.flag || 'default.png'}`; 
+                img.src = `flags/${item.flag || 'masters.png'}`; 
                 img.style.width = '24px';
                 img.style.height = 'auto';
                 img.style.borderRadius = '2px';
