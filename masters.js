@@ -9,7 +9,7 @@ function updateDashboard() {
     const draftMaster = urlParams.get('draftMaster');
 
     // Updated API URL
-    const BASE_API_URL = 'https://script.google.com/macros/s/AKfycbx_M9PG3_KIyKdBM_3Jq5Ig4LP6nG03Vtxbnxgyv-hljfuV38MOA7De11NlmV3_03SZ6Q/exec';
+    const BASE_API_URL = 'https://script.google.com/macros/s/AKfycbxaHCGORAXeWiKq7gRnjltp6fG2jQV-HMWnL_sSAWajn5PIyaHtSZPYlMfRUeuw07uvgQ/exec';
 
     let fetchUrl = `${BASE_API_URL}?page=leaderboard`;
     if (draftMaster) {
